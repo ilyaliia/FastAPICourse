@@ -4,8 +4,6 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
-if __name__ == "__main__":
-    uvicorn.run("main:app", reload=True)
 
 books = [
     {
@@ -47,3 +45,7 @@ def create_book(new_book: NewBook):
         "author": new_book.author
     })
     return {"success": True, "message": "Книга успешно добавлена"}
+
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", reload=True)
