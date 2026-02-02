@@ -1,4 +1,5 @@
 from fastapi import FastAPI, File, UploadFile
+import uvicorn
 
 from fastapi.responses import StreamingResponse, FileResponse
 
@@ -37,3 +38,7 @@ def iterfile(filename: str):
 @app.get("/files/streaming/{filename}")
 async def get_streaming_file(filename: str):
     return StreamingResponse(iterfile(filename), media_type="video/mp4")
+
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", reload=True)
